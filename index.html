@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandt Consulting | Reestruturação e Crescimento para Empresas de Médio Porte</title>
+    <style>
+        :root {
+            --primary: #1a3c6e;
+            --secondary: #00a6a6;
+            --accent: #ffc300;
+            --light: #f5f5f5;
+            --dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #008080;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--dark);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 166, 166, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-icon i {
+            color: var(--secondary);
+            font-size: 24px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        /* About */
+        .about {
+            padding: 100px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .key-points {
+            margin-top: 30px;
+        }
+        
+        .key-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .key-point i {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background-color: #e0e0e0;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            font-size: 14px;
+            color: var(--secondary);
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .cta .btn:hover {
+            background-color: #e6b000;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-flex {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details i {
+            color: var(--secondary);
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            text-decoration: none;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero {
+                padding: 130px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-flex {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Brandt<span>Consulting</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#team">Nossa Equipe</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transforme sua empresa para o próximo nível</h1>
+                <p>Especialistas em reestruturação e crescimento para empresas de médio porte. Soluções personalizadas para desafios complexos.</p>
+                <a href="#contact" class="btn">Agende uma Consulta Gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções integradas para reestruturar, otimizar e acelerar o crescimento do seu negócio</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Estratégia de Crescimento</h3>
+                    <p>Desenvolvemos estratégias personalizadas para expansão de mercado, diversificação de produtos e aumento de receita.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Reestruturação Operacional</h3>
+                    <p>Otimizamos processos internos para aumentar a eficiência, reduzir custos e melhorar a produtividade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestão de Talentos</h3>
+                    <p>Estruturamos equipes de alto desempenho, implementamos avaliações de desempenho e programas de desenvolvimento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Reestruturação Financeira</h3>
+                    <p>Analisamos e otimizamos o desempenho financeiro, capital de giro e estratégias de investimento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Estratégia de Marketing</h3>
+                    <p>Desenvolvemos planos de marketing orientados por dados para fortalecer o posicionamento e aumentar vendas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Transformação Digital</h3>
+                    <p>Modernizamos sua empresa com soluções tecnológicas adaptadas ao seu segmento e necessidades específicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="Consultor Sênior Brandt Consulting">
+                </div>
+                <div class="about-text">
+                    <h2>Sobre a Brandt Consulting</h2>
+                    <p>Somos especialistas em transformar empresas de médio porte em organizações mais eficientes, competitivas e lucrativas, liderados por nosso consultor sênior especializado em turnaround.</p>
+                    <p>Nossa abordagem combina conhecimento técnico com estratégias práticas e comprovadas de reestruturação, garantindo resultados tangíveis e sustentáveis para nossos clientes.</p>
+                    <div class="key-points">
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>+15 anos de experiência em consultoria empresarial</p>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>+200 projetos de sucesso em diversos segmentos</p>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Metodologia comprovada com resultados mensuráveis</p>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Acompanhamento contínuo e suporte completo</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn">Conheça Nossa Equipe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+                <p>Conheça nosso especialista em reestruturação e turnaround de empresas</p>
+            </div>
+            <div class="about-content" style="flex-direction: row-reverse;">
+                <div class="about-text">
+                    <h3>Consultor Sênior em Turnaround</h3>
+                    <p>Com extensa experiência em reestruturação empresarial, nosso consultor sênior é especialista em identificar oportunidades de melhoria e implementar soluções eficazes para empresas que enfrentam desafios de mercado.</p>
+                    <p>Combinando visão estratégica e conhecimento técnico, ele já liderou mais de 50 projetos de turnaround bem-sucedidos em diversos segmentos.</p>
+                    <div class="key-points">
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Especialista em recuperação de empresas</p>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>MBA em Gestão Empresarial</p>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Certificação internacional em Turnaround Management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" style="max-width: 350px;">
+                    <img src="sua-foto.jpg" alt="Consultor Sênior em Turnaround">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Nossos Clientes Dizem</h2>
+                <p>Veja como nossas soluções transformaram negócios de diferentes segmentos</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A Brandt Consulting foi fundamental para a nossa reestruturação. Em apenas 6 meses, conseguimos aumentar nosso faturamento em 40% e reduzir custos operacionais em 25%."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A transformação digital liderada pela equipe da Brandt modernizou nossos processos e abriu novos canais de vendas que não imaginávamos possíveis para nosso segmento."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Ana Paula Silva</h4>
+                            <p>Diretora, Indústria Têxtil Aurora</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Nossa empresa estava estagnada há anos. A estratégia de crescimento desenvolvida pela Brandt nos permitiu expandir para três novos mercados em apenas 18 meses."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Roberto Almeida</h4>
+                            <p>Proprietário, Distribuidora RA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para transformar sua empresa?</h2>
+            <p>Agende uma consulta inicial gratuita e descubra como podemos ajudar sua empresa a superar desafios e alcançar novos patamares de crescimento.</p>
+            <a href="#contact" class="btn">Fale com um Consultor</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h2>Entre em Contato</h2>
+                    <p>Nossa equipe está pronta para ouvir sobre os desafios da sua empresa e discutir como podemos ajudar.</p>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Av. Paulista, 1000, São Paulo - SP</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <p>+55 11 9999-8888</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <p>contato@brandtconsulting.com.br</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/seu-endpoint-formspree" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Brandt Consulting</h3>
+                    <ul>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#testimonials">Casos de Sucesso</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Estratégia de Crescimento</a></li>
+                        <li><a href="#">Reestruturação Operacional</a></li>
+                        <li><a href="#">Gestão de Talentos</a></li>
+                        <li><a href="#">Transformação Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">E-books</a></li>
+                        <li><a href="#">Estudos de Caso</a></li>
+                        <li><a href="#">Webinars</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Brandt Consulting. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave para as âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animação de header no scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
